@@ -26,4 +26,12 @@ class RoleUser extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function user() {
+        return $this->belongsTo("App\Models\User", 'user_id', 'id');
+    }
+
+    public function role() {
+        return $this->belongsTo("App\Models\MangementAccess\Role", 'role_id', 'id');
+    }
 }
