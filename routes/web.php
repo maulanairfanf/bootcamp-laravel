@@ -34,15 +34,19 @@ use App\Http\Controllers\Frontsite\RegisterController;
 
 Route::resource('/', LandingController::class);
 
-Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth:sanctum', 'verified']], function () {
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     // appointment page
-    Route::get('appointment/doctor/{id}', [AppointmentController::class, 'appointment'])->name('appointment.doctor');
     Route::resource('appointment', AppointmentController::class);
 
     // payment page
-    Route::get('payment/success', [PaymentController::class, 'success'])->name('payment.success');
-    Route::get('payment/appointment/{id}', [PaymentController::class, 'payment'])->name('payment.appointment');
+    Route::resource('payment', PaymentController::class);
+
+});
+
+Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth:sanctum', 'verified']], function () {
+
+    return view('dashboard');
 
 });
 
