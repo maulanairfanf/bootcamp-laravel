@@ -28,7 +28,7 @@ class StoreDoctorRequest extends FormRequest
             'specialist_id' => ['nullable', 'integer'],
             'name' => ['required', 'string', 'max:255'],
             'fee' => ['required', 'string', 'max:255'],
-            'photo' => ['nullable', 'string', 'max:1000']
+            'photo' => [ 'nullable', 'mimes:jpeg,svg,png', 'max:10000']
         ];
     }
 }

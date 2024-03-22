@@ -25,7 +25,7 @@ class UpdateConfigPaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'fee' => ['nullable', 'integer'],
+            'fee' => ['required', 'string', 'max:255'],
             'vat' => ['required', 'string', 'max:255'],
         ];
     }
